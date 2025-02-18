@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# this script  groups visitors by IP and HTTP status code, and displays this data
+
+log_url="http://intranet-projects-files.s3.amazonaws.com/holbertonschool-sysadmin_devops/80/apache-access.log"
+
+wget -q -O apache-access.log "$log_url"
+
+if [ ! -f "apache-access.log" ]; then
+    echo "Error: apache-access.log could not be downloaded."
+    exit 1
+fi
+
+awk '{print $1, $9}' apache-access.log | \
+  sort | \
+  uniq -c | \
+  sort -nr | \
+  awk '{print $1, $2, $3}'

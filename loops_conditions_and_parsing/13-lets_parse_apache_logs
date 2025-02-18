@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+log_url="http://intranet-projects-files.s3.amazonaws.com/holbertonschool-sysadmin_devops/80/apache-access.log"
+wget -q -O apache-access.log "$log_url"
+if [ ! -f "apache-access.log" ]; then
+    echo "Error: apache-access.log could not be downloaded."
+    exit 1
+fi
+# this script displays the visitor IP along with the HTTP status code from the Apache log file
+
+awk '{print $1, $9}' apache-access.log
