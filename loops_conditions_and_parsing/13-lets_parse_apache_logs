@@ -6,8 +6,8 @@ wget -q -O apache-access.log "$log_url"
 
 # Check if the file was downloaded successfully and has content
 if [ ! -s "apache-access.log" ]; then
-    echo "Error: apache-access.log could not be downloaded or is empty."
-    exit 1
+    # If the file is empty or doesn't exist, exit with no output
+    exit 0
 fi
 
 # Parse the log file and output IP and HTTP status code
