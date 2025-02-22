@@ -7,10 +7,10 @@ PID=$(pgrep -f 4-to_infinity_and_beyond)
 #then we  are going to kill the process(or stop)
 if [ -n "$PID" ]; then
 	kill "$PID"
-	echo "Terminated"
+	echo -n  "Terminated"
 
 else 
   
-	echo "No process found"
+	echo -n "No process found"
 
 fi
