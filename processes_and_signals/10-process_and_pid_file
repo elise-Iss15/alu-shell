@@ -7,7 +7,7 @@ echo $$ > /var/run/myscript.pid
 
 # Handle SIGTERM: print message, remove PID file, and exit
 trap 'echo "I hate the kill command"; rm -f /var/run/myscript.pid; exit 0' SIGTERM
-
+trap 'echo "Y U no love me?!"' SIGINT
 # Handle SIGQUIT: remove PID file and exit
 trap 'rm -f /var/run/myscript.pid; exit 0' SIGQUIT
 
