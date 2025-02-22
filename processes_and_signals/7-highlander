@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #this sript is displaying text "to infinity and beyond" indefinitely with sleep 2 iteration and the Iam invicible!!! on a SIGTERM signal
 #let's use trap command since it listens for SIGTERM signal and executes the echo command
-trap 'echo "Iam invincible"' SIGTERM 
+trap 'echo "Iam invincible";exit 0' SIGTERM 
 #the loop that displays "To infinity and beyond"indefinitely
  while true; do
 
