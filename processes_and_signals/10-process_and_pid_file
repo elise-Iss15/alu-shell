@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 
-# Create /var/run/myscript.pid and store the script's PID
+# This script creates a PID file, runs indefinitely, and handles SIGTERM/SIGQUIT signals
+
+# Store the script's PID in /var/run/myscript.pid
 echo $$ > /var/run/myscript.pid
 
-# Trap signals and handle them accordingly
-trap 'echo "I hate the kill command"' SIGTERM
-trap 'echo "Y U no love me?!"' SIGINT
-trap 'rm -f /var/run/myscript.pid; exit 0' SIGQUIT SIGTERM
+# Handle SIGTERM: print message, remove PID file, and exit
+trap 'echo "I hate the kill command"; rm -f /var/run/myscript.pid; exit 0' SIGTERM
 
-# Infinite loop with 2-second sleep
+# Handle SIGQUIT: remove PID file and exit
+trap 'rm -f /var/run/myscript.pid; exit 0' SIGQUIT
+
+# Infinite loop
 while true; do
     echo "To infinity and beyond"
     sleep 2
