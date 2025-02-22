@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # This script creates a PID file, runs indefinitely, and handles SIGTERM/SIGQUIT signals
 
 # Store the script's PID in /var/run/myscript.pid
